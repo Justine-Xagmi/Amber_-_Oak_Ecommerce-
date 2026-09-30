@@ -1,0 +1,51 @@
+{
+  "name": "ember-and-oak",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ember & Oak — a premium home-fragrance storefront built with Next.js App Router",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "lh": "next build && next start -p 4000 & npx wait-on http://localhost:4000 && lighthouse http://localhost:4000 --output=html --output-path=./lighthouse-report.html --view --chrome-flags=\"--headless\" ; kill %1",
+    "lh:ci": "start-server-and-test build:start http://localhost:3000 'lhci autorun'",
+    "build:start": "next build && next start"
+  },
+  "dependencies": {
+    "next": "^15.1.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "next-themes": "^0.4.3",
+    "clsx": "^2.1.1",
+    "zod": "^3.23.8",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "@types/node": "^22.9.0",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2",
+    "tailwindcss": "^3.4.14",
+    "postcss": "^8.4.47",
+    "autoprefixer": "^10.4.20",
+    "@tailwindcss/typography": "^0.5.15",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^15.1.0",
+    "vitest": "^2.1.4",
+    "@vitejs/plugin-react": "^4.3.3",
+    "jsdom": "^25.0.1",
+    "@testing-library/react": "^16.0.1",
+    "@playwright/test": "^1.48.2",
+    "@lhci/cli": "^0.14.0",
+    "wait-on": "^8.0.1",
+    "start-server-and-test": "^2.0.8"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  }
+}

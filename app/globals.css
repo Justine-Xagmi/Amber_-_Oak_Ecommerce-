@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-parchment-300 dark:border-ink-100;
+  }
+
+  html {
+    @apply scroll-smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-parchment-100 text-ink-400 dark:bg-ink-400 dark:text-parchment-100;
+    @apply font-sans antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-ink-500 dark:text-parchment-50;
+  }
+
+  /* Visible, high-contrast focus ring everywhere — never suppressed. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brass-400 ring-offset-2 ring-offset-parchment-100 dark:ring-offset-ink-400;
+  }
+
+  ::selection {
+    @apply bg-brass-200 text-ink-500;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-eo {
+    @apply mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-12;
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden bg-parchment-300 dark:bg-ink-100;
+  }
+  .skeleton::after {
+    content: "";
+    @apply absolute inset-0 animate-shimmer;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+    background-size: 400px 100%;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm px-5 py-3 text-sm font-medium tracking-wide transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-ink-500 text-parchment-100 hover:bg-ink-300 dark:bg-brass-400 dark:text-ink-500 dark:hover:bg-brass-300;
+  }
+  .btn-secondary {
+    @apply btn border border-ink-300 text-ink-400 hover:border-ink-500 hover:bg-ink-500/5 dark:border-parchment-300 dark:text-parchment-100 dark:hover:bg-parchment-100/10;
+  }
+  .btn-ghost {
+    @apply btn text-ink-400 hover:bg-ink-500/5 dark:text-parchment-100 dark:hover:bg-parchment-100/10;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-xs font-medium uppercase tracking-wide text-ink-100 dark:text-parchment-300;
+  }
+  .field-input {
+    @apply w-full rounded-sm border border-parchment-400 bg-parchment-50 px-3.5 py-2.5 text-sm text-ink-500 placeholder:text-ink-100/60 focus:border-brass-400 dark:border-ink-100 dark:bg-ink-300 dark:text-parchment-50;
+  }
+  .field-error {
+    @apply mt-1.5 text-xs text-danger;
+  }
+}

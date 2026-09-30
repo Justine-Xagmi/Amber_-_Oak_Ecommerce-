@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+.env
+.env.local
+*.log
+.DS_Store
+lighthouse-report.html
+.lighthouseci
+test-results
+playwright-report
+coverage
